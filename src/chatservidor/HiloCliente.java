@@ -40,7 +40,7 @@ public class HiloCliente extends Thread {
     /**
      * Método encargado de cerrar el socket con el que se esta comunicando.
      */
-    public void desconnectar() {
+    public void desconectar() {
         try {
             socket.close();
             escuchando = false;
@@ -58,7 +58,7 @@ public class HiloCliente extends Thread {
         } catch (Exception ex) {
             System.err.println("Error al llamar al método readLine del hilo del cliente.");
         }
-        desconnectar();
+        desconectar();
     }
 
     /**
@@ -154,7 +154,7 @@ public class HiloCliente extends Thread {
         auxLista.add("USUARIO_DESCONECTADO");
         auxLista.add(this.identificador);
         server.agregarLog("\nEl cliente \"" + this.identificador + "\" se ha desconectado.");
-        this.desconnectar();
+        this.desconectar();
         for (int i = 0; i < server.clientes.size(); i++) {
             if (server.clientes.get(i).equals(this)) {
                 server.clientes.remove(i);
